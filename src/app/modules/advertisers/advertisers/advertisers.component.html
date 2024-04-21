@@ -1,0 +1,11 @@
+<section class="header">
+  <h1>Advertisers</h1>
+  <button color="primary" mat-raised-button (click)="createAdvertiser()">
+    New Advertiser
+  </button>
+</section>
+<app-advertisers-datatable
+  [isLoading]="isLoadingAdvertisers$$()"
+  [isFailure]="isAdvertisersFailure$$()"
+  [advertisers]="advertisers$$()"
+/>

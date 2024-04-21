@@ -1,0 +1,23 @@
+.body-container {
+  position: relative;
+  margin: 0 24px;
+}
+
+.table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.loading-shade,
+.message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 200px 0;
+}

@@ -1,0 +1,61 @@
+<div class="body-container mat-elevation-z8">
+  @if (!isListEmpty) {
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.name }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="orgurl">
+          <th mat-header-cell *matHeaderCellDef>Org URL</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.orgurl }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telephone">
+          <th mat-header-cell *matHeaderCellDef>Telephone</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.telephone }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.addressDetails?.address || "" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="postCode">
+          <th mat-header-cell *matHeaderCellDef>Post Code</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.addressDetails?.postcode || "" }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          class="mat-row"
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+      </table>
+    </div>
+  }
+</div>
+
+@if (isLoading) {
+  <div class="loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
+}
+@if (isFailure) {
+  <div class="message-container">Oops, something went wrong.</div>
+}
+@if (isListEmpty && !isLoading && !isFailure) {
+  <div class="message-container">No Advertisers Found.</div>
+}

@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Create New Advertiser</h2>
+<mat-dialog-content>
+  <form [formGroup]="advertiserForm" class="advertiser-form">
+    <mat-form-field *ngFor="let element of advertiserFormConfig">
+      <mat-label>{{ element.label }}</mat-label>
+      <input matInput [formControlName]="element.controlName" required />
+      @if (advertiserForm.get(element.controlName)?.errors) {
+        <mat-error>Please enter a valid {{ element.label }}.</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Create</button>
+</mat-dialog-actions>
